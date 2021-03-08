@@ -18,6 +18,10 @@ test {
     useJUnitPlatform()
 }
 
+task ThreadLocalRun(type: JavaExec) {
+    main = "com.kozlov.localthread.ThreadLocalRun"
+    classpath = sourceSets.main.runtimeClasspath
+}
 
 task IPCalcV1(type: JavaExec) {
     main = "com.kozlov.ipaddress.IPCalcV1"
