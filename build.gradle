@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+task IPCalcV1(type: JavaExec) {
+    main = "com.kozlov.ipaddress.IPCalcV1"
+    classpath = sourceSets.main.runtimeClasspath
+    if (project.hasProperty('filePath')) {
+        args += ["$filePath"]
+    }
+    if(project.hasProperty('bufferSize')) {
+        args += "$bufferSize"
+    }
+}
+
+task IPCalcV2(type: JavaExec) {
+    main = "com.kozlov.ipaddress.IPCalcV2"
+    classpath = sourceSets.main.runtimeClasspath
+    if (project.hasProperty('filePath')) {
+        args += ["$filePath"]
+    }
+    if(project.hasProperty('bufferSize')) {
+        args += "$bufferSize"
+    }
+}
